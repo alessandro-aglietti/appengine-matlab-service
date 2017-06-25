@@ -2,10 +2,6 @@ runtime: custom
 env: flex
 service: matlab
 
-network:
-  forwarded_ports:
-    - 8080:8080
-
 resources:
   cpu: 2
   memory_gb: 4

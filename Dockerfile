@@ -81,4 +81,6 @@ RUN ls -la
 
 WORKDIR /
 
+EXPOSE 8080
+
 CMD ["java", "-jar", "/opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar"]
