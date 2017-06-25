@@ -25,5 +25,12 @@ RUN ./install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent
 
 WORKDIR /opt
 
-RUN git clone
-./mvnw clean package
+RUN git clone https://github.com/growingabit/appengine-matlab-service
+
+WORKDIR /opt/appengine-matlab-service
+
+RUN ./mvnw clean package
+
+WORKDIR /
+
+CMD ["java", "-jar", "/opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar"]

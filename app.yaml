@@ -16,3 +16,17 @@ env_variables:
   XAPPLRESDIR: '/opt/mcr/v92/X11/app-defaults'
   MCR_ROOT: '/opt/mcr'
   JAVA_HOME: '/opt/jdk1.7.0_80'
+
+skip_files:
+  - .idea
+  - .mvn
+  - src
+  - target
+  - .gitignore
+  - gs-rest-service.iml
+  - appengine-matlab-service.iml
+  - LICENSE
+  - mvnw
+  - mvnw.cmd
+  - pom.xml
+  - README.md
