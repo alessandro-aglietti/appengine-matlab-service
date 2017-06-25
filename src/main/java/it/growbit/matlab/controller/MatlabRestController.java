@@ -23,6 +23,11 @@ public class MatlabRestController {
         return "ok";
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
+        return "see /matlab for status";
+    }
+
     @RequestMapping(value = "/matlab", method = RequestMethod.GET)
     public String matlab() {
         return "isMCRInitialized: " + this.matlab.isMCRInitialized();

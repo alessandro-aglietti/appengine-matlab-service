@@ -10,6 +10,13 @@ resources:
 automatic_scaling:
   max_num_instances: 1
 
+health_check:
+  enable_health_check: True
+  check_interval_sec: 30
+  timeout_sec: 15
+  unhealthy_threshold: 10
+  healthy_threshold: 1
+
 skip_files:
   - .idea
   - .mvn
