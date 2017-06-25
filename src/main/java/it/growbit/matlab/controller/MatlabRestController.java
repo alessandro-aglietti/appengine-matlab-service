@@ -30,7 +30,13 @@ public class MatlabRestController {
 
     @RequestMapping(value = "/matlab", method = RequestMethod.GET)
     public String matlab() {
-        return "isMCRInitialized: " + this.matlab.isMCRInitialized();
+        String str = "";
+
+        str += "isMCRInitialized: " + this.matlab.isMCRInitialized();
+
+        str += this.matlab.getEnvs();
+
+        return str;
     }
 
     @RequestMapping(value = "/matlab/criptoOracleValori", method = RequestMethod.POST)

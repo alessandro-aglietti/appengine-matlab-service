@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Map;
 
 /**
  * Created by name on 25/06/17.
@@ -82,5 +83,15 @@ public class MatlabController {
         Object[] forecast_outs = this.criptoOracle.superCriptoOracleTrend(1, mw_arr);
 
         return ((MWNumericArray) forecast_outs[1]).getDouble(0);
+    }
+
+    public String getEnvs(){
+        String envs_str = "";
+        Map<String, String> envs = System.getenv();
+        for (String key: envs.keySet() ) {
+            envs_str += "\n " + key + ": " + envs.get(key);
+        }
+
+        return  envs_str;
     }
 }
