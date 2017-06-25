@@ -65,7 +65,7 @@ WORKDIR /opt
 
 RUN git clone https://github.com/growingabit/appengine-matlab-service
 
-RUN cp -r /opt/criptoOracleValori.src /opt/appengine-matlab-service/src/main/java/criptoOracleValori
+RUN cp -r /opt/criptoOracleValori.src/criptoOracleValori /opt/appengine-matlab-service/src/main/java/criptoOracleValori
 
 WORKDIR /opt/appengine-matlab-service/lib
 
@@ -80,6 +80,10 @@ RUN ./mvnw clean package
 WORKDIR /opt
 
 RUN ls -la
+
+RUN mkdir -p BOOT-INF/classes/criptoOracleValori
+RUN cp /opt/criptoOracleValori.src/criptoOracleValori/criptoOracleValori.ctf BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
+RUN zip -g /opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
 
 WORKDIR /
 
