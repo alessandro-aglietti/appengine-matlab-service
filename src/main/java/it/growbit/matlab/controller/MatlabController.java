@@ -21,6 +21,9 @@ public class MatlabController {
     @PostConstruct
     public void init() {
         if (!MWApplication.isMCRInitialized()) {
+            /**
+             * https://it.mathworks.com/products/compiler/mcr.html
+             */
             MWApplication.initialize(MWMCROption.NODISPLAY, MWMCROption.logFile("/opt/matlab_from_java.log"));
         }
     }
