@@ -3,19 +3,19 @@ package it.growbit.matlab.controller;
 import com.mathworks.toolbox.javabuilder.*;
 import criptoOracleValori.Class1;
 import it.growbit.matlab.model.Last24HoursAvg;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 /**
  * Created by name on 25/06/17.
+ * http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/htmlsingle/#beans-factory-scopes
  */
 @Component
+@Scope(value = "singleton")
 public class MatlabController {
 
-    /**
-     * TODO singleton
-     */
     private Class1 criptoOracle = null;
 
     @PostConstruct
