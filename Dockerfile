@@ -13,6 +13,14 @@ RUN wget https://storage.googleapis.com/growingabit-io-backend/jdk-7u80-linux-x6
 RUN tar -xzf jdk-7u80-linux-x64.tar.gz
 RUN export JAVA_HOME=/opt/jdk1.7.0_80
 
+RUN export PATH=$JAVA_HOME/bin:$PATH
+
+RUN wget https://storage.cloud.google.com/growingabit-io-backend/apache-maven-3.3.9-bin.zip
+RUN unzip apache-maven-3.3.9-bin.zip
+RUN export M2_HOME=/opt/apache-maven-3.3.9
+
+RUN export PATH=$M2_HOME/bin:$PATH
+
 RUN mkdir mcr_runtime_installer
 RUN mkdir mcr
 
@@ -27,6 +35,12 @@ RUN ./install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent
 WORKDIR /opt
 
 RUN git clone https://github.com/growingabit/appengine-matlab-service
+
+WORKDIR /opt/appengine-matlab-service/lib
+
+RUN cp /opt/mcr/v92/toolbox/javabuilder/jar/javabuilder.jar ./javabuilder.jar
+
+RUN ./maven-install-jars.sh
 
 WORKDIR /opt/appengine-matlab-service
 
