@@ -31,10 +31,10 @@ RUN echo $PATH
 
 RUN mvn -v
 
-RUN mkdir mcr_runtime_installer
+RUN mkdir mcr_installer
 RUN mkdir mcr
 
-WORKDIR /opt/mcr_runtime_installer
+WORKDIR /opt/mcr_installer
 
 RUN wget https://storage.googleapis.com/growingabit-io-backend/MCR_R2017a_glnxa64_installer.zip
 
