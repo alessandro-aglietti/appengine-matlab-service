@@ -1,9 +1,8 @@
 package it.growbit.matlab.controller;
 
-import com.mathworks.toolbox.javabuilder.MWApplication;
-import com.mathworks.toolbox.javabuilder.MWException;
-import com.mathworks.toolbox.javabuilder.MWMCROption;
+import com.mathworks.toolbox.javabuilder.*;
 import criptoOracleValori.Class1;
+import it.growbit.matlab.model.Last24HoursAvg;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -31,6 +30,7 @@ public class MatlabController {
     }
 
     public void init_oracle(boolean force) {
+        this.init();
         if (this.criptoOracle == null || force) {
             try {
                 this.criptoOracle = new Class1();
@@ -43,5 +43,33 @@ public class MatlabController {
 
     public boolean isMCRInitialized() {
         return MWApplication.isMCRInitialized();
+    }
+
+    public Double criptoOracleValori(Last24HoursAvg l24havg) throws MWException {
+        this.init_oracle();
+
+        Double[] l24havg_arr = new Double[24];
+        l24havg_arr = l24havg.getAvgs().toArray(l24havg_arr);
+
+        int[] dims = { 24, 1 };
+        MWNumericArray mw_arr = MWNumericArray.newInstance(dims, l24havg_arr, MWClassID.DOUBLE);
+
+        Object[] forecast_outs = this.criptoOracle.criptoOracleValori(1, mw_arr);
+
+        return ((MWNumericArray) forecast_outs[1]).getDouble(0);
+    }
+
+    public Double superCriptoOracleTrend(Last24HoursAvg l24havg) throws MWException {
+        this.init_oracle();
+
+        Double[] l24havg_arr = new Double[24];
+        l24havg_arr = l24havg.getAvgs().toArray(l24havg_arr);
+
+        int[] dims = { 24, 1 };
+        MWNumericArray mw_arr = MWNumericArray.newInstance(dims, l24havg_arr, MWClassID.DOUBLE);
+
+        Object[] forecast_outs = this.criptoOracle.superCriptoOracleTrend(1, mw_arr);
+
+        return ((MWNumericArray) forecast_outs[1]).getDouble(0);
     }
 }

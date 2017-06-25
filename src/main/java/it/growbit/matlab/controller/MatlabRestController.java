@@ -1,5 +1,6 @@
 package it.growbit.matlab.controller;
 
+import com.mathworks.toolbox.javabuilder.MWException;
 import it.growbit.matlab.model.Last24HoursAvg;
 import it.growbit.matlab.model.Next24HourAvg;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,23 @@ public class MatlabRestController {
         return "isMCRInitialized: " + this.matlab.isMCRInitialized();
     }
 
-    @RequestMapping(value = "/matlab", method = RequestMethod.POST)
-    public Next24HourAvg matlab(@RequestBody Last24HoursAvg last24houravgs) {
+    @RequestMapping(value = "/matlab/criptoOracleValori", method = RequestMethod.POST)
+    public Next24HourAvg matlab_criptoOracleValori(@RequestBody Last24HoursAvg last24houravgs) throws MWException {
 
-        Next24HourAvg next24houravg = new Next24HourAvg(this.doForecast(last24houravgs));
+        Double forecast = this.matlab.criptoOracleValori(last24houravgs);
+
+        Next24HourAvg next24houravg = new Next24HourAvg(forecast);
 
         return next24houravg;
     }
 
-    private Double doForecast(Last24HoursAvg last24HoursAvg) {
-        return 0d;
+    @RequestMapping(value = "/matlab/superCriptoOracleTrend", method = RequestMethod.POST)
+    public Next24HourAvg matlab_superCriptoOracleTrend(@RequestBody Last24HoursAvg last24houravgs) throws MWException {
+
+        Double forecast = this.matlab.superCriptoOracleTrend(last24houravgs);
+
+        Next24HourAvg next24houravg = new Next24HourAvg(forecast);
+
+        return next24houravg;
     }
 }
