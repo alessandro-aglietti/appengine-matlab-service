@@ -11,15 +11,23 @@ WORKDIR /opt
 
 RUN wget https://storage.googleapis.com/growingabit-io-backend/jdk-7u80-linux-x64.tar.gz
 RUN tar -xzf jdk-7u80-linux-x64.tar.gz
-RUN export JAVA_HOME=/opt/jdk1.7.0_80
+ENV JAVA_HOME="/opt/jdk1.7.0_80"
 
-RUN export PATH=$JAVA_HOME/bin:$PATH
+ENV PATH="$JAVA_HOME/bin:$PATH"
+
+RUN echo $PATH
+
+RUN java -version
 
 RUN wget https://storage.googleapis.com/growingabit-io-backend/apache-maven-3.3.9-bin.zip
 RUN unzip apache-maven-3.3.9-bin.zip
-RUN export M2_HOME=/opt/apache-maven-3.3.9
+ENV M2_HOME="/opt/apache-maven-3.3.9"
 
-RUN export PATH=$M2_HOME/bin:$PATH
+ENV PATH="$M2_HOME/bin:$PATH"
+
+RUN echo $PATH
+
+RUN mvn -v
 
 RUN mkdir mcr_runtime_installer
 RUN mkdir mcr
@@ -31,6 +39,10 @@ RUN wget https://storage.googleapis.com/growingabit-io-backend/MCR_R2017a_glnxa6
 RUN unzip MCR_R2017a_glnxa64_installer.zip
 
 RUN ./install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent
+
+ENV MCR_ROOT="/opt/mcr"
+ENV LD_LIBRARY_PATH="${MCR_ROOT}/v92/runtime/glnxa64:${MCR_ROOT}/v92/bin/glnxa64:${MCR_ROOT}/v92/sys/os/glnxa64:$LD_LIBRARY_PATH"
+ENV XAPPLRESDIR="${MCR_ROOT}/v92/X11/app-defaults"
 
 WORKDIR /opt
 
