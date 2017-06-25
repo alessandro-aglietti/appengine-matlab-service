@@ -15,7 +15,7 @@ RUN export JAVA_HOME=/opt/jdk1.7.0_80
 
 RUN export PATH=$JAVA_HOME/bin:$PATH
 
-RUN wget https://storage.cloud.google.com/growingabit-io-backend/apache-maven-3.3.9-bin.zip
+RUN wget https://storage.googleapis.com/growingabit-io-backend/apache-maven-3.3.9-bin.zip
 RUN unzip apache-maven-3.3.9-bin.zip
 RUN export M2_HOME=/opt/apache-maven-3.3.9
 
