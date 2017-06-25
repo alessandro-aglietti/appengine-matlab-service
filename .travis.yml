@@ -1,3 +1,4 @@
+language: java
 install: true
 before_install:
   - export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
