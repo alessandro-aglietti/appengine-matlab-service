@@ -1,0 +1,5 @@
+.target
+spring-boot/.idea
+gs-rest-service.iml
+.idea
+target/

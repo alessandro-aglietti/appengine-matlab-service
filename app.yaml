@@ -1,0 +1,18 @@
+runtime: custom
+env: flex
+service: matlab
+
+network:
+  forwarded_ports:
+    - 8080:8080
+
+resources:
+  cpu: 2
+  memory_gb: 4
+  disk_size_gb: 20
+
+env_variables:
+  LD_LIBRARY_PATH: '/opt/mcr/v92/runtime/glnxa64:/opt/mcr/v92/bin/glnxa64:/opt/mcr/v92/sys/os/glnxa64:'
+  XAPPLRESDIR: '/opt/mcr/v92/X11/app-defaults'
+  MCR_ROOT: '/opt/mcr'
+  JAVA_HOME: '/opt/jdk1.7.0_80'
