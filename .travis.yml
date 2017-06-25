@@ -12,5 +12,6 @@ before_script:
 script:
 - gcloud config set app/cloud_build_timeout 3600
 - gcloud config set container/build_timeout 3600
+- gsutil cp gs://growingabit-io-backend/matlab/criptoOracleValori-20170625T191520.jar ./criptoOracleValori.jar
 - gcloud app deploy --quiet --verbosity info
 

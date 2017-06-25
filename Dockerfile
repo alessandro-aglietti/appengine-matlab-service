@@ -6,6 +6,7 @@ RUN apt-get install -y wget
 RUN apt-get install -y unzip
 RUN apt-get install -y git
 RUN apt-get install -y libxt-dev
+RUN apt-get install -y mercurial
 
 WORKDIR /opt
 
@@ -46,7 +47,23 @@ ENV XAPPLRESDIR="${MCR_ROOT}/v92/X11/app-defaults"
 
 WORKDIR /opt
 
+RUN git clone https://github.com/growingabit/jd-core-java
+
+WORKDIR /opt/jd-core-java
+
+RUN ./gradlew
+
+WORKDIR /opt
+
+ADD criptoOracleValori.jar /opt/criptoOracleValori.jar
+
+RUN java -jar jd-core-java/build/libs/jd-core-java-1.2.jar criptoOracleValori
+
+WORKDIR /opt
+
 RUN git clone https://github.com/growingabit/appengine-matlab-service
+
+RUN cp -r /opt/criptoOracleValori /opt/appengine-matlab-service/src/main/java/criptoOracleValori
 
 WORKDIR /opt/appengine-matlab-service/lib
 
@@ -57,6 +74,10 @@ RUN ./maven-install-jars.sh
 WORKDIR /opt/appengine-matlab-service
 
 RUN ./mvnw clean package
+
+WORKDIR /opt
+
+RUN ls -la
 
 WORKDIR /
 
