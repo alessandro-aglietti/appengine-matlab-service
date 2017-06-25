@@ -6,9 +6,7 @@ before_install:
   - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
   - sudo apt-get update && sudo apt-get install -y kubectl google-cloud-sdk google-cloud-sdk-app-engine-java
 before_script:
-- openssl aes-256-cbc -K $encrypted_380c8ce0181b_key -iv $encrypted_380c8ce0181b_iv
-  -in travis-cigrowbit-52554fcb00cd.json.enc -out travis-cigrowbit-52554fcb00cd.json
-  -d
+- openssl aes-256-cbc -K $encrypted_380c8ce0181b_key -iv $encrypted_380c8ce0181b_iv -in travis-cigrowbit-52554fcb00cd.json.enc -out travis-cigrowbit-52554fcb00cd.json -d
 - gcloud auth activate-service-account "travis-ci@growbit-0.iam.gserviceaccount.com" --key-file=travis-cigrowbit-52554fcb00cd.json
 - gcloud config set project growbit-0
 script:
