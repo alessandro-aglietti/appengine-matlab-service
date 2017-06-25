@@ -41,7 +41,7 @@ RUN unzip MCR_R2017a_glnxa64_installer.zip
 RUN ./install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent
 
 ENV MCR_ROOT="/opt/mcr"
-ENV LD_LIBRARY_PATH="${MCR_ROOT}/v92/runtime/glnxa64:${MCR_ROOT}/v92/bin/glnxa64:${MCR_ROOT}/v92/sys/os/glnxa64:$LD_LIBRARY_PATH"
+ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${MCR_ROOT}/v92/runtime/glnxa64:${MCR_ROOT}/v92/bin/glnxa64:${MCR_ROOT}/v92/sys/os/glnxa64"
 ENV XAPPLRESDIR="${MCR_ROOT}/v92/X11/app-defaults"
 
 WORKDIR /opt
