@@ -56,6 +56,10 @@ public class MatlabController {
 
         Object[] forecast_outs = this.criptoOracle.criptoOracleValori(1, mw_arr);
 
+        /**
+         * Each of these data types is in the form of a matrix or array.
+         * https://it.mathworks.com/help/mps/java/data-conversion-with-java-and-matlab-types.html
+         */
         return ((MWNumericArray) forecast_outs[1]).getDouble(0);
     }
 
@@ -68,6 +72,10 @@ public class MatlabController {
         int[] dims = { 24, 1 };
         MWNumericArray mw_arr = MWNumericArray.newInstance(dims, l24havg_arr, MWClassID.DOUBLE);
 
+        /**
+         * Each of these data types is in the form of a matrix or array.
+         * https://it.mathworks.com/help/mps/java/data-conversion-with-java-and-matlab-types.html
+         */
         Object[] forecast_outs = this.criptoOracle.superCriptoOracleTrend(1, mw_arr);
 
         return ((MWNumericArray) forecast_outs[1]).getDouble(0);
