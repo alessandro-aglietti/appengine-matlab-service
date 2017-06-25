@@ -57,7 +57,7 @@ WORKDIR /opt
 
 ADD criptoOracleValori.jar /opt/criptoOracleValori.jar
 
-RUN java -jar jd-core-java/build/libs/jd-core-java-1.2.jar criptoOracleValori
+RUN java -jar jd-core-java/build/libs/jd-core-java-1.2.jar criptoOracleValori.jar
 
 WORKDIR /opt
 
