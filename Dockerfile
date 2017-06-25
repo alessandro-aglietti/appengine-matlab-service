@@ -7,6 +7,7 @@ RUN apt-get install -y unzip
 RUN apt-get install -y git
 RUN apt-get install -y libxt-dev
 RUN apt-get install -y mercurial
+RUN apt-get install -y zip
 
 WORKDIR /opt
 
