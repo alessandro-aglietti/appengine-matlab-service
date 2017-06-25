@@ -1,5 +1,9 @@
 FROM gcr.io/google-appengine/debian
 
+ENV LC_ALL="en_US.UTF-8"
+ENV LANG="en_US.UTF-8"
+ENV LANGUAGE="en_US.UTF-8"
+
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y wget
@@ -93,4 +97,4 @@ WORKDIR /
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "/opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar"]
+CMD ["java", "-Dfile.encoding=UTF-8", "-jar", "/opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar"]
