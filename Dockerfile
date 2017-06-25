@@ -51,13 +51,13 @@ RUN git clone https://github.com/growingabit/jd-core-java
 
 WORKDIR /opt/jd-core-java
 
-RUN ./gradlew
+RUN ./gradlew assemble
 
 WORKDIR /opt
 
 ADD criptoOracleValori.jar /opt/criptoOracleValori.jar
 
-RUN java -jar jd-core-java/build/libs/jd-core-java-1.2.jar criptoOracleValori.jar
+RUN java -jar /opt/jd-core-java/build/libs/jd-core-java-1.2.jar criptoOracleValori.jar
 
 WORKDIR /opt
 
