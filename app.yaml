@@ -12,8 +12,8 @@ automatic_scaling:
 
 health_check:
   enable_health_check: True
-  check_interval_sec: 30
-  timeout_sec: 15
+  check_interval_sec: 10
+  timeout_sec: 5
   unhealthy_threshold: 10
   healthy_threshold: 1
 
