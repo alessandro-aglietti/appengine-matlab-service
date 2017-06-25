@@ -65,7 +65,7 @@ WORKDIR /opt
 
 RUN git clone https://github.com/growingabit/appengine-matlab-service
 
-RUN cp -r /opt/criptoOracleValori /opt/appengine-matlab-service/src/main/java/criptoOracleValori
+RUN cp -r /opt/criptoOracleValori.src /opt/appengine-matlab-service/src/main/java/criptoOracleValori
 
 WORKDIR /opt/appengine-matlab-service/lib
 
