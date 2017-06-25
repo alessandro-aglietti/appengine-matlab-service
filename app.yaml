@@ -7,6 +7,10 @@ resources:
   memory_gb: 4
   disk_size_gb: 20
 
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: 1
+
 skip_files:
   - .idea
   - .mvn
