@@ -10,6 +10,7 @@ before_script:
   - gcloud auth activate-service-account "travis-ci@growbit-0.iam.gserviceaccount.com" --key-file=travis-cigrowbit-52554fcb00cd.json
   - gcloud config set project growbit-0
 script:
-- gcloud config set container/build_timeout "2h15m5s"
+- gcloud config set app/cloud_build_timeout 3600
+- gcloud config set container/build_timeout 3600
 - gcloud app deploy --quiet --verbosity info
 
