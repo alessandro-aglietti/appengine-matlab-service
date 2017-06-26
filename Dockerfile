@@ -92,6 +92,8 @@ RUN java -jar /opt/jd-core-java/build/libs/jd-core-java-1.2.jar ./criptoOracleVa
 
 # qui il file ctf non ha contenuto?!
 RUN ls -la /opt/criptoOracleValori.src/criptoOracleValori
+# lo levo pure
+RUN rm /opt/criptoOracleValori.src/criptoOracleValori/criptoOracleValori.ctf
 
 # profit
 RUN ls -la
