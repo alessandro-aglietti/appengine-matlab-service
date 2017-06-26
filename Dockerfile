@@ -1,8 +1,12 @@
 FROM gcr.io/google-appengine/debian
 
+# https://serverfault.com/questions/362903/how-do-you-set-a-locale-non-interactively-on-debian-ubuntu
 ENV LC_ALL="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
 ENV LANGUAGE="en_US.UTF-8"
+
+RUN locale-gen --purge en_US.UTF-8
+echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 
 RUN apt-get update
 RUN apt-get upgrade -y
