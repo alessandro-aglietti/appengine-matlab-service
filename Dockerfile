@@ -106,4 +106,6 @@ WORKDIR /
 
 EXPOSE 8080
 
-CMD ["java", "-Dfile.encoding=UTF-8", "-jar", "/opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar"]
+# no UTF-8 because Matlab wrapper use java.io instead of java.nio
+# see http://docs.oracle.com/javase/7/docs/technotes/guides/intl/encoding.doc.html
+CMD ["java", "-Dfile.encoding=UTF8", "-jar", "/opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar"]
