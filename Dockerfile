@@ -65,7 +65,11 @@ RUN echo $XAPPLRESDIR
 
 # https://www.mathworks.com/support/bugreports/1297894
 # We have done limited testing with version 20 of libstdc++.so.6 !!
-RUN mv ${MCR_ROOT}/v92/sys/os/glnxa64/libstdc++.so.6 ${MCR_ROOT}/v92/sys/os/glnxa64/libstdc++.so.6.old
+# RUN mv ${MCR_ROOT}/v92/sys/os/glnxa64/libstdc++.so.6 ${MCR_ROOT}/v92/sys/os/glnxa64/libstdc++.so.6.old
+
+# https://www.mathworks.com/support/bugreports/1531964
+# WORKDIR ${MCR_ROOT}/v92/sys/os/glnxa64
+# RUN ln -s /usr/lib/x86_64-linux-gnu/libstdc++.so.6 libstdc++.so.6
 
 WORKDIR /opt
 
@@ -79,8 +83,17 @@ WORKDIR /opt
 
 ADD criptoOracleValori.jar /opt/criptoOracleValori.jar
 
+RUN unzip ./criptoOracleValori.jar
+
+# qui il file ctf ha contenuto!?
+RUN ls -la /opt/criptoOracleValori
+
 RUN java -jar /opt/jd-core-java/build/libs/jd-core-java-1.2.jar ./criptoOracleValori.jar
 
+# qui il file ctf non ha contenuto?!
+RUN ls -la /opt/criptoOracleValori.src/criptoOracleValori
+
+# profit
 RUN ls -la
 
 WORKDIR /opt
@@ -104,7 +117,8 @@ WORKDIR /opt
 RUN ls -la
 
 RUN mkdir -p BOOT-INF/classes/criptoOracleValori
-RUN cp /opt/criptoOracleValori.src/criptoOracleValori/criptoOracleValori.ctf BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
+# usare quello unzippato perche' quello decompilato e' vuoto!?
+RUN cp /opt/criptoOracleValori/criptoOracleValori.ctf BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
 RUN zip -g /opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
 
 WORKDIR /
