@@ -64,7 +64,7 @@ public class MatlabController {
          * Each of these data types is in the form of a matrix or array.
          * https://it.mathworks.com/help/mps/java/data-conversion-with-java-and-matlab-types.html
          */
-        return ((MWNumericArray) forecast_outs[0]).getDouble(0);
+        return ((MWNumericArray) forecast_outs[0]).getDoubleData()[0];
     }
 
     public Double superCriptoOracleTrend(Last24HoursAvg l24havg) throws MWException {
@@ -82,7 +82,7 @@ public class MatlabController {
          */
         Object[] forecast_outs = this.criptoOracle.superCriptoOracleTrend(1, mw_arr);
 
-        return ((MWNumericArray) forecast_outs[0]).getDouble(0);
+        return ((MWNumericArray) forecast_outs[0]).getDoubleData()[0];
     }
 
     public String getEnvs(){
