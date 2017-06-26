@@ -30,3 +30,9 @@ skip_files:
   - mvnw.cmd
   - pom.xml
   - README.md
+  - .git
+  - lib
+  - .travis.yml
+  - app.yaml
+  - travis-cigrowbit-52554fcb00cd.json
+  - travis-cigrowbit-52554fcb00cd.json.enc
