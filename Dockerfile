@@ -1,5 +1,9 @@
 FROM gcr.io/google-appengine/debian
 
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y locales-all
+
 # https://serverfault.com/questions/362903/how-do-you-set-a-locale-non-interactively-on-debian-ubuntu
 ENV LC_ALL="en_US.UTF-8"
 ENV LANG="en_US.UTF-8"
