@@ -4,6 +4,7 @@ import com.mathworks.toolbox.javabuilder.MWException;
 import it.growbit.matlab.model.Last24HoursAvg;
 import it.growbit.matlab.model.Next24HourAvg;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +29,7 @@ public class MatlabRestController {
         return "see /matlab for status";
     }
 
-    @RequestMapping(value = "/matlab", method = RequestMethod.GET)
+    @RequestMapping(value = "/matlab", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String matlab() {
         String str = "";
 
