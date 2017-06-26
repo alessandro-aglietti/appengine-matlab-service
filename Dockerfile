@@ -13,14 +13,13 @@ ENV LANGUAGE="en_US.UTF-8"
 RUN locale-gen --purge en_US.UTF-8
 RUN echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
 
-RUN apt-get update
-RUN apt-get upgrade -y
 RUN apt-get install -y wget
 RUN apt-get install -y unzip
 RUN apt-get install -y git
 RUN apt-get install -y libxt-dev
 RUN apt-get install -y mercurial
 RUN apt-get install -y zip
+RUN apt-get install -y libc++-dev
 
 WORKDIR /opt
 
