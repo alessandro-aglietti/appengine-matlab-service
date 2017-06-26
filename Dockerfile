@@ -1,5 +1,7 @@
 FROM gcr.io/google-appengine/debian
 
+# nel caso servissero pacchetti non-free/contrib
+# RUN sudo sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y locales-all
@@ -19,8 +21,8 @@ RUN apt-get install -y git
 RUN apt-get install -y libxt-dev
 RUN apt-get install -y mercurial
 RUN apt-get install -y zip
-RUN apt-get install -y libc++-dev
-
+# potrebbe non servire
+# RUN apt-get install -y libc++-dev
 WORKDIR /opt
 
 RUN wget https://storage.googleapis.com/growingabit-io-backend/jdk-7u80-linux-x64.tar.gz
@@ -60,6 +62,10 @@ ENV LD_LIBRARY_PATH="${MCR_ROOT}/v92/runtime/glnxa64:${MCR_ROOT}/v92/bin/glnxa64
 RUN echo $LD_LIBRARY_PATH
 ENV XAPPLRESDIR="${MCR_ROOT}/v92/X11/app-defaults"
 RUN echo $XAPPLRESDIR
+
+# https://www.mathworks.com/support/bugreports/1297894
+# We have done limited testing with version 20 of libstdc++.so.6 !!
+RUN mv ${MCR_ROOT}/v92/sys/os/glnxa64/libstdc++.so.6 ${MCR_ROOT}/v92/sys/os/glnxa64/libstdc++.so.6.old
 
 WORKDIR /opt
 
