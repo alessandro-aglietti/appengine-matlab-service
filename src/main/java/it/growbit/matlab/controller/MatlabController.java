@@ -25,7 +25,7 @@ public class MatlabController {
             /**
              * https://it.mathworks.com/products/compiler/mcr.html
              */
-            MWApplication.initialize(MWMCROption.NOJVM, MWMCROption.NODISPLAY, MWMCROption.logFile("/opt/matlab_from_java.log"));
+            MWApplication.initialize(MWMCROption.NODISPLAY, MWMCROption.logFile("/opt/matlab_from_java.log"));
         }
     }
 
