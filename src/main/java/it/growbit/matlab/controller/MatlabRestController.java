@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.server.PathParam;
+
 /**
  * Created by name on 24/06/17.
  */
@@ -54,6 +56,20 @@ public class MatlabRestController {
     public Next24HourAvg matlab_superCriptoOracleTrend(@RequestBody Last24HoursAvg last24houravgs) throws MWException {
 
         Double forecast = this.matlab.superCriptoOracleTrend(last24houravgs);
+
+        Next24HourAvg next24houravg = new Next24HourAvg(forecast);
+
+        return next24houravg;
+    }
+
+    @RequestMapping(value = "/matlab/{package}/{method}", method = RequestMethod.POST)
+    public Next24HourAvg matlab_generics(
+            @RequestBody Last24HoursAvg matlab_payload,
+            @PathParam("package") String packageName,
+            @PathParam("method") String methodName
+    ) throws Exception {
+
+        Double forecast = this.matlab.generic_invocation(packageName, methodName, matlab_payload);
 
         Next24HourAvg next24houravg = new Next24HourAvg(forecast);
 

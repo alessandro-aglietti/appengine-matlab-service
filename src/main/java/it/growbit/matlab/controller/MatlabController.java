@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
@@ -93,5 +94,29 @@ public class MatlabController {
         }
 
         return  envs_str;
+    }
+
+    public Double generic_invocation(String packageName, String methodName, Last24HoursAvg l24havg) throws Exception {
+        Double[] l24havg_arr = new Double[l24havg.getAvgs().size()];
+        l24havg_arr = l24havg.getAvgs().toArray(l24havg_arr);
+
+        int[] dims = {l24havg.getAvgs().size(), 1};
+        MWNumericArray mw_arr = MWNumericArray.newInstance(dims, l24havg_arr, MWClassID.DOUBLE);
+
+        String className = packageName + ".Class1";
+        Class c = Class.forName(className);
+        Object matlab_instance = c.newInstance();
+        Method method = matlab_instance.getClass().getMethod(methodName, Integer.class, MWArray.class);
+
+        Object matlab_out_object = method.invoke(1, mw_arr);
+        if (matlab_out_object instanceof Object[]) {
+            Object[] matlab_out_object_arr = (Object[]) matlab_out_object;
+            if (matlab_out_object_arr.length != 1) {
+                throw new Exception("Ci sono piu' output del previsto: " + matlab_out_object_arr.length);
+            }
+            return ((MWNumericArray) matlab_out_object_arr[0]).getDoubleData()[0];
+        } else {
+            throw new Exception("matlab_out_object non e' un Object[]");
+        }
     }
 }
