@@ -55,7 +55,13 @@ public class MatlabController {
         Object matlab_instance = c.newInstance();
         Method method = matlab_instance.getClass().getMethod(methodName, int.class, Object[].class);
 
-        Object matlab_out_object = method.invoke(1, mw_arr);
+        /**
+         * method second argument is Object...
+         */
+        Object[] mw_input = new Object[1];
+        mw_input[0] = mw_arr;
+
+        Object matlab_out_object = method.invoke(matlab_instance, 1, mw_input);
         if (matlab_out_object instanceof Object[]) {
             Object[] matlab_out_object_arr = (Object[]) matlab_out_object;
             if (matlab_out_object_arr.length != 1) {
