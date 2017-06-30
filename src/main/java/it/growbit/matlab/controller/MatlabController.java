@@ -53,7 +53,7 @@ public class MatlabController {
         String className = packageName + ".Class1";
         Class c = Class.forName(className);
         Object matlab_instance = c.newInstance();
-        Method method = matlab_instance.getClass().getMethod(methodName, Integer.class, MWArray.class);
+        Method method = matlab_instance.getClass().getMethod(methodName, Integer.class, Object[].class);
 
         Object matlab_out_object = method.invoke(1, mw_arr);
         if (matlab_out_object instanceof Object[]) {
