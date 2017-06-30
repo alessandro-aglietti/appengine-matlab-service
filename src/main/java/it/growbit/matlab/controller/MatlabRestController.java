@@ -43,9 +43,9 @@ public class MatlabRestController {
     }
 
     @RequestMapping(value = "/matlab/criptoOracleValori", method = RequestMethod.POST)
-    public Next24HourAvg matlab_criptoOracleValori(@RequestBody Last24HoursAvg last24houravgs) throws MWException {
+    public Next24HourAvg matlab_criptoOracleValori(@RequestBody Last24HoursAvg last24houravgs) throws Exception {
 
-        Double forecast = this.matlab.criptoOracleValori(last24houravgs);
+        Double forecast = this.matlab.generic_invocation("criptoOracleValori", "criptoOracleValori", last24houravgs);
 
         Next24HourAvg next24houravg = new Next24HourAvg(forecast);
 
@@ -53,9 +53,9 @@ public class MatlabRestController {
     }
 
     @RequestMapping(value = "/matlab/superCriptoOracleTrend", method = RequestMethod.POST)
-    public Next24HourAvg matlab_superCriptoOracleTrend(@RequestBody Last24HoursAvg last24houravgs) throws MWException {
+    public Next24HourAvg matlab_superCriptoOracleTrend(@RequestBody Last24HoursAvg last24houravgs) throws Exception {
 
-        Double forecast = this.matlab.superCriptoOracleTrend(last24houravgs);
+        Double forecast = this.matlab.generic_invocation("superCriptoOracleTrend", "superCriptoOracleTrend", last24houravgs);
 
         Next24HourAvg next24houravg = new Next24HourAvg(forecast);
 
