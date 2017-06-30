@@ -12,9 +12,9 @@ RUN ls -la /opt/criptoOracleValori
 RUN java -jar /opt/jd-core-java/build/libs/jd-core-java-1.2.jar ./criptoOracleValori.jar
 
 # qui il file ctf non ha contenuto?!
-RUN ls -la /opt/criptoOracleValori.src/criptoOracleValori
+RUN ls -la /opt/criptoOracleValori.src/superCriptoOracleTrend
 # lo levo pure
-RUN rm /opt/criptoOracleValori.src/criptoOracleValori/criptoOracleValori.ctf
+RUN rm /opt/criptoOracleValori.src/superCriptoOracleTrend/superCriptoOracleTrend.ctf
 
 # profit
 RUN ls -la
@@ -23,7 +23,7 @@ WORKDIR /opt
 
 RUN git clone https://github.com/growingabit/appengine-matlab-service
 
-RUN cp -r /opt/criptoOracleValori.src/criptoOracleValori /opt/appengine-matlab-service/src/main/java/criptoOracleValori
+RUN cp -r /opt/criptoOracleValori.src/superCriptoOracleTrend /opt/appengine-matlab-service/src/main/java/superCriptoOracleTrend
 
 WORKDIR /opt/appengine-matlab-service/lib
 
@@ -39,10 +39,10 @@ WORKDIR /opt
 
 RUN ls -la
 
-RUN mkdir -p BOOT-INF/classes/criptoOracleValori
+RUN mkdir -p BOOT-INF/classes/superCriptoOracleTrend
 # usare quello unzippato perche' quello decompilato e' vuoto!?
-RUN cp /opt/criptoOracleValori/criptoOracleValori.ctf BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
-RUN zip -g /opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar BOOT-INF/classes/criptoOracleValori/criptoOracleValori.ctf
+RUN cp /opt/criptoOracleValori/superCriptoOracleTrend.ctf BOOT-INF/classes/superCriptoOracleTrend/superCriptoOracleTrend.ctf
+RUN zip -g /opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar BOOT-INF/classes/superCriptoOracleTrend/superCriptoOracleTrend.ctf
 
 WORKDIR /
 

@@ -1,7 +1,7 @@
 package it.growbit.matlab.controller;
 
 import com.mathworks.toolbox.javabuilder.*;
-import criptoOracleValori.Class1;
+import superCriptoOracleTrend.Class1;
 import it.growbit.matlab.model.Last24HoursAvg;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
