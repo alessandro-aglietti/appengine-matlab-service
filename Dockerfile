@@ -7,7 +7,7 @@ ADD criptoOracleValori.jar /opt/criptoOracleValori.jar
 RUN unzip ./criptoOracleValori.jar
 
 # qui il file ctf ha contenuto!?
-RUN ls -la /opt/criptoOracleValori
+RUN ls -la /opt/superCriptoOracleTrend
 
 RUN java -jar /opt/jd-core-java/build/libs/jd-core-java-1.2.jar ./criptoOracleValori.jar
 
@@ -41,7 +41,7 @@ RUN ls -la
 
 RUN mkdir -p BOOT-INF/classes/superCriptoOracleTrend
 # usare quello unzippato perche' quello decompilato e' vuoto!?
-RUN cp /opt/criptoOracleValori/superCriptoOracleTrend.ctf BOOT-INF/classes/superCriptoOracleTrend/superCriptoOracleTrend.ctf
+RUN cp /opt/superCriptoOracleTrend/superCriptoOracleTrend.ctf BOOT-INF/classes/superCriptoOracleTrend/superCriptoOracleTrend.ctf
 RUN zip -g /opt/appengine-matlab-service/target/appengine-matlab-service-0.0.1.jar BOOT-INF/classes/superCriptoOracleTrend/superCriptoOracleTrend.ctf
 
 WORKDIR /
