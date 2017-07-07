@@ -7,15 +7,18 @@ resources:
   memory_gb: 4
   disk_size_gb: 20
 
-automatic_scaling:
-  max_num_instances: 1
+#automatic_scaling:
+#  max_num_instances: 1
+
+manual_scaling:
+  instances: 0
 
 health_check:
-  enable_health_check: True
-  check_interval_sec: 10
-  timeout_sec: 5
-  unhealthy_threshold: 10
-  healthy_threshold: 1
+  enable_health_check: False
+#  check_interval_sec: 10
+#  timeout_sec: 5
+#  unhealthy_threshold: 10
+#  healthy_threshold: 1
 
 skip_files:
   - .idea
