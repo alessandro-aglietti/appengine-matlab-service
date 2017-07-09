@@ -11,7 +11,7 @@ resources:
 #  max_num_instances: 1
 
 manual_scaling:
-  instances: 0
+  instances: 1
 
 health_check:
   enable_health_check: False
